@@ -6,5 +6,3 @@ powershell -command "& { Set-ExecutionPolicy Bypass }"
 
 Set-ExecutionPolicy Bypass
 
-git config --global user.email humberto.cunha.crispim@gmail.com
-git config --global user.name humbertocrispim
