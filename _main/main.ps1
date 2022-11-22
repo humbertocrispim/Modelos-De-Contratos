@@ -13,7 +13,7 @@ powershell -command "& { iwr https://github.com/humbertocrispim/automate_program
 powershell -command "& { Expand-Archive -Path C:\ficha_contrato.zip -DestinationPath C:\ }"
 powershell -command "& { mv C:\automate_program_installation-main 'C:\Modelos De Contratos' } "
 rmdir /s /q "C:\Modelos De Contratos\_main"
-
+rmdir /s /q C:\ficha_contrato.zip
 
 # Disable run script PowerShell
 powershell -command "& { Set-ExecutionPolicy Default }"
