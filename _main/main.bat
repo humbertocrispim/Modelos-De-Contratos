@@ -12,3 +12,4 @@ del /s /q C:\ficha_contrato.zip
 powershell -command "& { Set-ExecutionPolicy Default }"
 
 exit
+exit
