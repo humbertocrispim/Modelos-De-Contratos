@@ -8,5 +8,7 @@ powershell -command "& { mv C:\automate_program_installation-main 'C:\Modelos De
 rmdir /s /q "C:\Modelos De Contratos\_main"
 del /s /q C:\ficha_contrato.zip
 
+
 powershell -command "& { Set-ExecutionPolicy Default }"
 
+exit
