@@ -27,13 +27,10 @@ if (-not(Test-Path -LiteralPath $PathDst -PathType Container)) {
     }
 
 }else {
-    
-    git pull $PathDst
+    Set-Location $PathDst
+    git pull
 }
 
 exit
-#
-##
-##
 
-# ------------------ Fim -------------------------------------------
+# --------------- Fim ----------------------------------------------
