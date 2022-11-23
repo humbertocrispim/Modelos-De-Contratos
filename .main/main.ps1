@@ -31,6 +31,8 @@ if (-not(Test-Path -LiteralPath $PathDst -PathType Container)) {
     git pull
 }
 
+Set-ExecutionPolicy Default 
+
 exit
 
 # --------------- Fim ----------------------------------------------
