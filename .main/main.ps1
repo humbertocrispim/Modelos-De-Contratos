@@ -1,11 +1,16 @@
-##########################################################################################################################################################################
+# ------------------------------------------------------------------------------------------
+#
 #                           By: Humberto Crispim                                                                                                                          #
 #                           Git: https://github.com/humbertocrispim                                                                                                       #
-#                                                                                                                                                                         #
-##########################################################################################################################################################################
+#  
+# ------------------------------------------------------------------------------------------                                                                                                                                                                       #
 
 
+
+$repository = "https://github.com/humbertocrispim/Modelos-De-Contratos.git"
 $PathDst = "C:\Modelos-De-Contratos" 
+
+Set-Location C:\
 
 if (-not(Test-Path -LiteralPath $PathDst -PathType Container)) {
     try {
@@ -14,14 +19,17 @@ if (-not(Test-Path -LiteralPath $PathDst -PathType Container)) {
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
         
         # Clone repository 
-        git clone https://github.com/humbertocrispim/Modelos-De-Contratos.git
+        git clone $repository
  
     }
     catch {
-        {"Error"}
+        { "Error" }
     }
 
-}    
+}else {
+    Set-Location $PathDst
+    git pull
+}
 
-# Disable run script PowerShell
-powershell -command "& { Set-ExecutionPolicy Default }"
+Exit
+# --------------- Fim ---------------------------------------------
