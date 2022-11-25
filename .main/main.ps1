@@ -27,6 +27,9 @@ if (-not(Test-Path -LiteralPath $PathDst -PathType Container)) {
         git clone $repository $PathDst
         }"
         
+        sleep 2
+
+        choco uninstall git -y
  
     }
     catch {
