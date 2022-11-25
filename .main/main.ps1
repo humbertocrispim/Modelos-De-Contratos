@@ -5,10 +5,12 @@
 #  
 # ------------------------------------------------------------------------------------------                                                                                                                                                                       #
 
+# --------------------- Variables ----------------------------------------------------------
 
-
-$repository = "https://github.com/humbertocrispim/Modelos-De-Contratos.git"
+$repository = "https://github.com/GEPGAV/FICHAS-DE-CONTRATO.git"
 $PathDst = "C:\Modelos-De-Contratos" 
+
+# ------------------------------------------------------------------------------------------
 
 Set-Location C:\
 
@@ -21,7 +23,10 @@ if (-not(Test-Path -LiteralPath $PathDst -PathType Container)) {
         choco install git -y 
 
         # Clone repository 
+        powershell "& {
         git clone $repository $PathDst
+        }"
+        
  
     }
     catch {
@@ -33,8 +38,9 @@ if (-not(Test-Path -LiteralPath $PathDst -PathType Container)) {
     git pull
 }
 
-Set-ExecutionPolicy Default 
+
+Set-ExecutionPolicy Default -Force
 
 exit
 
-# --------------- Fim ----------------------------------------------
+# ------------------------------- Fim ----------------------------------------------
