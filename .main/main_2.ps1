@@ -7,36 +7,37 @@
 
 
 
-$repository = "https://github.com/humbertocrispim/Modelos-De-Contratos.git"
-$PathDst = "C:\Modelos-De-Contratos" 
+$Repository = "https://github.com/humbertocrispim/Modelos-De-Contratos.git"
+$Computers = Get-Content .\teste.txt
+$Computerpath = '\\'+$computers[0]+'\c$\Modelos-De-Contratos\'
 
 
-
-Set-Location C:\
-
-if (-not(Test-Path -LiteralPath $PathDst -PathType Container)) {
-    try {
-
-        # Install Chocolatery
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-        
-        choco install git -y 
-
-        # Clone repository 
-        git clone $repository $PathDst
- 
+function PullGit {
+    
+    if (-not(Test-Path -LiteralPath $Computerpath -PathType Container)) {
+        try {
+    
+            # Clone repository 
+            git clone $repository $Computerpath 
+     
+        }
+        catch {
+            { "Error" }
+        }
+    
+    }else {
+        Set-Location $Computerpath
+        git pull
+        Set-Location $HOME
     }
-    catch {
-        { "Error" }
-    }
-
-}else {
-    Set-Location $PathDst
-    git pull
 }
 
-Set-ExecutionPolicy Default 
 
-exit
+for ($i = 0; $i -lt $Computers.Count; $i++) {
+    PullGit
+    
+}
+
+
 
 # --------------- Fim ----------------------------------------------
